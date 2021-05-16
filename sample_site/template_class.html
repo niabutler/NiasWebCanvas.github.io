@@ -55,6 +55,9 @@
 	<img class="img-responsive" src="assets/img/projectbacklog1.JPG" alt="">
 <hr>
     <h1>Sprint One</h1>
+	<h2>Aim:</h2>
+	<h4>The aim of my first sprint is to create a webpage with a ccanvas that is able to draw a rectangle by clicking 
+		and dragging the mouse and then releasing it. </h4><br>
 <h3>Plan / Kanban</h3>
 <img class="img-responsive" src="assets/img/sprint1/sprint_1_kanban.JPG" alt=""><br>
 <h3>Link to the Canvas Page: <a href="///Users/niabutler/Documents/DIG2021/internal/version_1/sprint_1.HTML">Sprint 1 Canvas Webpage</a></h3>
@@ -62,7 +65,7 @@
 <h3>Testing</h3>
 <div class="col-container">
 	<div class="col">
-		<h4> Test 1 </h4>
+		<h4> Test 1</h4>
    <p> The first test I conducted was to ensure that the event listeners were picking up mouse events (such as mouse down, mouse up and mouse move). 
 	   When testing the function of this code, I also had to make sure the mouse events were only being picked 
 	   up inside the canvas, not any other place on the screen. I made sure of this by writing some code that sent 
@@ -101,47 +104,124 @@
 
 <hr>
 <h1>Sprint Two</h1>
-<h3>Plan / Kanban</h3>
+
+<h2>Aim:</h2>
+	<h4>The aim of my second sprint was to create a dedicated drawing canvas within the webpage, 
+		separate from where all of the buttons and sliders will go, in order to make the canvas 
+		easier to use for the user. This sprint involves boundary checks and some thought into the 
+		colours and aesthetics of the page also. </h4><br>
+		<h3>Plan / Kanban</h3>
 <div class="col-container">
 	<div class="col">
+		<h4> Option A</h4>
 		<img class="img-responsive" src="assets/img/sprint2/sprint_2_plan1.jpg" alt=""><br>
 	<p>The first plan I came up with has a side bar with all of the options/functions on it. I think that with the side 
-		bar to the left, it keeps all of the buttons/options together but out of the way of the canvas so it is easy to distinguish between them.</p>
+		bar to the left, it keeps all of the buttons/options together but out of the way of the canvas so it is easy to distinguish between them. 
+		Putting it to the side also means that there is a blank canvas with nothing covering it and no distractions. </p>
+		<h4>Outcome of option A</h4>
+		<img class="img-responsive" src="assets/img/sprint2/S2_optionA.jpg" alt=""><br>
+		
 	</div>
 	 <div class="col">
-		<img class="img-responsive" src="assets/img/sprint2/sprint_2_plan2.jpg" alt=""><br>
-	<p>Ut wisi enim ad minim veniam, <a href="#">quis nostrud exerci tation ullamcorper</a> suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel.</p>
+		<h4> Option B</h4>
+		<img class="img-responsive" src="assets/img/sprint2/sprint_2_plan2.jpg" alt=""><br><br>
+	<p>The second option I came up with was having a bar down the bottom of the page. Again, everything it out of the way of the canvas, 
+		it's just a slightly different setup. I drew inspiration from Doogle Docs as this application has a very handy top bar, however 
+		I did want to change it up so created it below the drawing instead.  </p>
+		<h4>Outcome of option B</h4>
+		<img class="img-responsive" src="assets/img/sprint2/S2_optionB.jpg" alt=""><br>
+		
 	</div>
+	<h3> Final choice</h3>
+		<p> I decided to go with option A, because for me I think it looks cleaner. Having the bar underneath the drawing was a distraction 
+			and you weren't able to look at the image without seeing the bar. Havin git to the side means that it can be 'put away' and the 
+			drawing canvas can be seen by itself. This adds to the aesthetic of the page, and overall gives the page a simpler and less complicated look.  </p>
 	</div>
 
-
-<h3>Link to the Canvas Page: <a href="///Users/niabutler/Documents/DIG2021/internal/version_1/sprint_1.HTML">Sprint 1 Canvas Webpage</a></h3>
-<br><br>
+<h3>Link to the Canvas Page: <a href="file:///Users/niabutler/Documents/DIG2021/internal/NiasWebCanvas.github.io/version_2/sprint_2.html">Sprint 2 Canvas Webpage</a></h3>
+<br>
 <h3>Testing</h3>
+<h4> Boundary Testing </h4>
+   <p> In this screen recording I am checking to see that the mouse / webpage / canvas is picking up boundaries. The boundaries I created were for the box on the screen,
+	   which will be similar to the 'drawing page' of the canvas (see above). The console returns either true or false when the mouse is either in or out of the boundaries it was given.
+   </p>
 <div class="col-container">
-	<div class="col">
-		<h4> Test 1 </h4>
-   <p> The first .....</p>
+	<div class="col"> 
+		<h4>Test 1 with a random box for boundaries</h4>
+		<video class="center" controls>
+			<source src="assets/vids/inboundscheck1.mp4" type="video/mp4">
+		  Your browser does not support the video tag.
+		  </video>
    </div>
    <div class="col">
-	   <video class="center" controls>
-		   <source src="" type="video/mp4">
-		 Your browser does not support the video tag.
-		 </video>
+	<h4>Testing with my drawing area</h4>
+	<video class="center" controls>
+		<source src="assets/vids/inboundscheck2.mp4" type="video/mp4">
+	  Your browser does not support the video tag.
+	  </video>
+	   
    </div>
    </div>
    <div class="col-container">
-	<div class="col">
-		<h4> Test 2 </h4>
-   <p> The second .... </p>
+		<div class="col"><br>
+			<h4>Testing that true and false boundaries uphold when the user clicks and drags out of the boundaries</h4>
+			<p> In this screen recording, I am testing to see if the boundaries check (returns true or false) 
+				still upholds when the user clicks and drags to instantiate a new rectangle. From this test 
+				I can see that a rectangle is being instantited even if the click and drag 'draw guide' is not showing up on the screen. 
+				This is a problem that needs to be fixed before I move on to the next version. However when the mouse is 'out of bounds' 
+				the draw guide is not showing up which means the boundaries are upholding and the user isn't able to draw outside of the canvas. </p>
+			   
+		   </div>
+		   <div class="col"> 
+		<video class="center" controls>
+			<source src="assets/vids/rectangleboundarytest1.mp4" type="video/mp4">
+		  Your browser does not support the video tag.
+		  </video>
    </div>
-   <div class="col">
-	   <video class="center" controls>
-		   <source src="" type="video/mp4">
-		 Your browser does not support the video tag.
-		 </video>
+   
    </div>
-   </div>
+   <div class="col-container">
+	<div class="col"><br>
+		<h4>Testing the draw guide function when the mouse is in or out of bounds</h4>
+		<p> In this screen test, I am testing to see if the draw guide function works only when inside of the boundaries. 
+			From this test I can see that if the mouse is clicked and dragged from inside the boundary then the rectangle outline 
+			is drawn however as soon as the mouse is dragged out of the 'drawing space' then the outline disappears. A problem that I 
+			encountered was when the mouse was clicked and dragged from outside the boundary (the drawing area), it didn't draw the 'draw guide' 
+			however as soon as the mouse was dragged inbounds, the draw guide did show up on the screen outside of the canvas. This means that 
+			the boundaries had been put in the wrong function and need to be in the mouse down function. </p>
+		   
+	   </div>
+	   <div class="col"> 
+	<video class="center" controls>
+		<source src="assets/vids/boundarytest2.mp4" type="video/mp4">
+	  Your browser does not support the video tag.
+	  </video>
+</div>
+</div>
+
+
+<div class="col-container">
+ <div class="col"><br>
+	 <h4>Testing clip function</h4>
+	 <p> In this screen test, I am testing to see if the draw guide function works only when inside of the boundaries. 
+		 From this test I can see that if the mouse is clicked and dragged from inside the boundary then the rectangle outline 
+		 is drawn however as soon as the mouse is dragged out of the 'drawing space' then the outline disappears. A problem that I 
+		 encountered was when the mouse was clicked and dragged from outside the boundary (the drawing area), it didn't draw the 'draw guide' 
+		 however as soon as the mouse was dragged inbounds, the draw guide did show up on the screen outside of the canvas. This means that 
+		 the boundaries had been put in the wrong function and need to be in the mouse down function. </p>
+		
+	</div>
+	<div class="col"> 
+ <video class="center" controls>
+	 <source src="assets/vids/boundarytest2.mp4" type="video/mp4">
+   Your browser does not support the video tag.
+   </video>
+</div>
+</div>
+
+
+
+
 
  <h3>Reflect</h3>
  <p> This version...</p>
@@ -150,7 +230,7 @@
 
 <hr>
 <h1>Sprint Three</h1>
-
+<h3> Aim: To introduce buttons so that the user can choose different shapes to draw on the 'canvas'</h3>
 
 <hr>
 <h1> Relevant Implications Summary</h1>

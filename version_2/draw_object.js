@@ -3,7 +3,7 @@ console.log("dragPoint is called")
 console.log("point js has been called")
 
 class ControlObject{
-    constructor(){
+    constructor(x, y, w, h){
 
         // set variables to 0
         this.xMouse = 0;
@@ -12,8 +12,10 @@ class ControlObject{
         this.yMouseStart = 0;
         this.mouseDown = false;
 
-        this.w = 0;
-        this.h = 0;
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
 
         // create empty list
         this.objectSet = []
@@ -23,6 +25,7 @@ class ControlObject{
         canvas.addEventListener('mousemove', this.mMove.bind(this));
         canvas.addEventListener('mouseup', this.mUp.bind(this));
 
+        this.inBounds = false;
     }
 
     mDown(e){
@@ -30,33 +33,56 @@ class ControlObject{
         this.xMouseStart = e.offsetX;
         this.yMouseStart = e.offsetY;
         this.mouseDown = true;
-        this.drawGuide
-        console.log("mouse down")
+        this.inBounds = this.inBoundsCheck(this.xMouseStart, this.yMouseStart, this.x, this.y, this.w, this.h);
+        console.log(this.inBounds)
+    
+        // console.log("mouse down")
     }
 
     mMove(e){
         // when the mouse is moving...
         this.xMouse = e.offsetX;
         this.yMouse = e.offsetY;
-        console.log("mouse move")
-        var mouse_pos = "x:" + this.xMouse + ", y:" + this.yMouse
-        console.log(mouse_pos)
+        //console.log("mouse move")
+
+        
     }
 
     mUp(e){
         // when the mouse is up...
         this.mouseDown = false;
-        var temp = new Rectangle(this.xMouseStart, this.yMouseStart, this.w, this.h, "rgb(240, 60, 120")
-        this.objectSet.push(temp);
-        console.log("mouse up")
+        var w = this.xMouse - this.xMouseStart;
+        var h = this.yMouse - this.yMouseStart;
+        if(this.inBounds == true){
+            // create a new rectangle object, using the dimensions of the draw guide.
+            if(Math.abs(w) && Math.abs(h) > 1){
+                var temp = new Rectangle(this.xMouseStart, this.yMouseStart, w, h, "rgb(240, 60, 120")
+                // add new rectangle to object list 
+                this.objectSet.push(temp);
+                console.log(this.objectSet)
+            }
+        }
 
     }
 
+    inBoundsCheck(xM, yM, x, y, w, h){
+        // check for boundaries, return true or false if inside or outside boundaries
+        if(xM > x && xM < x+w && yM > y && yM < y+h){
+            return true;
+        }else{
+            return false;
+        }
+    
+    }
+
     update(){
-        this.w = this.xMouse - this.xMouseStart;
-        this.h = this.yMouse - this.yMouseStart;
-        if(this.mouseDown){
-            console.log("mouse is down");
+        // rectangle for user to make shapes on
+        ctx.save()
+        // draw grey rectangle (drawing area)
+        this.drawRect(this.x, this.y, this.w, this.h, "rgb(220,220,220")
+        // clip anything outside of the drawing area
+        ctx.clip()
+        if(this.mouseDown == true && this.inBounds == true){
             this.drawGuide();
         }
 
@@ -64,21 +90,32 @@ class ControlObject{
         for(var i=0 ; i< this.objectSet.length; i++){
             this.objectSet[i].update()
         }
+        // restore state for next object
+        ctx.restore()
     }
     
-
     drawGuide(){
-        this.drawRect(this.xMouseStart, this.yMouseStart, this.w, this.h);
-
+        var w = this.xMouse - this.xMouseStart;
+        var h = this.yMouse - this.yMouseStart;
+        this.drawRectGuide(this.xMouseStart, this.yMouseStart, w, h, "rgb(0,0,255)");
     }
 
-    drawRect(x,y,w,h){
+    drawRectGuide(x,y,w,h, col){
         ctx.beginPath();
         ctx.rect(x,y,w,h);
         ctx.linewidth = 1;
-        ctx.strokeStyle = "rgb(0,230,200)";
+        ctx.strokeStyle = col;
         ctx.stroke();
     }
+
+    drawRect(x,y,w,h, col){
+        ctx.beginPath();
+        ctx.rect(x,y,w,h);
+        ctx.linewidth = 1;
+        ctx.fillStyle = col;
+        ctx.fill();
+    }
+
 }
 
 
