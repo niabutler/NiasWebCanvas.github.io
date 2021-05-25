@@ -37,9 +37,6 @@ class Ellipse{
 
     draw(){
         ctx.beginPath();
-        //ctx.ellipse(600, 300, 50, 75, 0, 0, 2 * Math.PI);
-        //ctx.ellipse(x, y, radiusX, radiusY, rotation, startAngle, endAngle [, counterclockwise]);
-        //console.log(this.xC, this.yC, this.xR, this.yR, this.rotation, this.SA, this.EA)
         ctx.ellipse(this.xC, this.yC, Math.abs(this.xR), Math.abs(this.yR), this.rotation, this.SA, this.EA)
         ctx.fillStyle = this.col;
         ctx.fill();
