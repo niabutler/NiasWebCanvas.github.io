@@ -35,7 +35,6 @@ class ControlObject{
         this.mouseDown = true;
         this.inBounds = this.inBoundsCheck(this.xMouseStart, this.yMouseStart, this.x, this.y, this.w, this.h);
         console.log(this.inBounds)
-    
         // console.log("mouse down")
     }
 
@@ -43,9 +42,7 @@ class ControlObject{
         // when the mouse is moving...
         this.xMouse = e.offsetX;
         this.yMouse = e.offsetY;
-        //console.log("mouse move")
-
-        
+        //console.log("mouse move")   
     }
 
     mUp(e){
@@ -54,20 +51,20 @@ class ControlObject{
         var w = this.xMouse - this.xMouseStart;
         var h = this.yMouse - this.yMouseStart;
         if(this.inBounds == true){
-
             if (Button.selected == "Rectangle" && Math.abs(w) && Math.abs(h) > 1){
+                // create a new rectangle object, using the dimensions of the draw guide.
                 var temp = new Rectangle(this.xMouseStart, this.yMouseStart, w, h, "rgb(240, 60, 120")
+                // add new rectangle to object list 
                 this.objectSet.push(temp);
                 console.log(this.objectSet)
 
             }else if(Button.selected == "Ellipse" && Math.abs(w) && Math.abs(h) > 1){
                 var temp = new Ellipse(this.xMouseStart, this.yMouseStart, w, h, 0, 0, 2 * Math.PI, "rgb(255, 50, 4");
-                // add new rectangle to object list 
                 this.objectSet.push(temp);
                 console.log(this.objectSet)
 
             }
-            // create a new rectangle object, using the dimensions of the draw guide.
+            
         }
 
     }
@@ -107,20 +104,20 @@ class ControlObject{
         this.drawRectGuide(this.xMouseStart, this.yMouseStart, w, h, "rgb(0,0,255)");
     }
 
-    drawRectGuide(x,y,w,h,col){
-        ctx.beginPath();
-        ctx.rect(x,y,w,h);
-        ctx.linewidth = 1;
-        ctx.strokeStyle = col;
-        ctx.stroke();
-    }
-
     drawRect(x,y,w,h, col){
         ctx.beginPath();
         ctx.rect(x,y,w,h);
         ctx.linewidth = 1;
         ctx.fillStyle = col;
         ctx.fill();
+    }
+
+    drawRectGuide(x,y,w,h, col){
+        ctx.beginPath();
+        ctx.rect(x,y,w,h);
+        ctx.linewidth = 1;
+        ctx.strokeStyle = col;
+        ctx.stroke();
     }
 
 }
