@@ -35,7 +35,19 @@ class ControlObject{
         this.mouseDown = true;
         this.inBounds = this.inBoundsCheck(this.xMouseStart, this.yMouseStart, this.x, this.y, this.w, this.h);
 
-        // console.log("mouse down")
+        if(this.inBounds == true){
+            if(Button.selected == "radius 1"){
+                var temp = new Point(10, Swatch.selected);
+                this.objectSet.push(temp);
+            }else if(Button.selected == "radius 2"){
+                var temp = new Point(13, Swatch.selected);
+                this.objectSet.push(temp);
+            }else if(Button.selected == "radius 3"){
+                var temp = new Point(50, Swatch.selected);
+                this.objectSet.push(temp);
+            }
+
+         }
     }
 
     mMove(e){
@@ -47,6 +59,7 @@ class ControlObject{
 
     mUp(e){
         // when the mouse is up...
+        console.log(Button.selected)
         this.mouseDown = false;
         var w = this.xMouse - this.xMouseStart;
         var h = this.yMouse - this.yMouseStart;
@@ -68,16 +81,11 @@ class ControlObject{
                     this.objectSet.push(temp);}
             }else if(Button.selected == "Circle" && Math.abs(w) && Math.abs(h) > 1){
                 if(Math.abs(w) > Math.abs(h)){
-                    //var temp = new Circle(this.xMouseStart+w/2, this.yMouseStart+h/2, Math.abs(h/2), 5, Swatch.selected);
                     var temp = new Circle(this.xMouseStart+w/2, this.yMouseStart+h/2, Math.abs(h/2), 0, 0, 2 * Math.PI, Swatch.selected)
                     this.objectSet.push(temp);
                 }else if(Math.abs(w) < Math.abs(h)){
-                    //var temp = new Circle(this.xMouseStart+w/2, this.yMouseStart+h/2, Math.abs(w/2), 5, Swatch.selected);
                     var temp = new Circle(this.xMouseStart+w/2, this.yMouseStart+h/2, Math.abs(w/2), 0, 0, 2 * Math.PI, Swatch.selected)
                     this.objectSet.push(temp);}
-            }else if(Button.selected == "Paintbrush" && Button.selected == 10){
-                var temp = new Point(Radius.selected);
-                this.objectSet.push(temp);
             }
             
         }}
@@ -108,7 +116,7 @@ class ControlObject{
         this.drawRect(this.x, this.y, this.w, this.h, "rgb(105,105,105)")
         // clip anything outside of the drawing area
         ctx.clip()
-        if(this.mouseDown == true && this.inBounds == true && Button.selected !== "Paintbrush"){
+        if(this.mouseDown == true && this.inBounds == true && Button.selected !== "radius 1" && Button.selected !== "radius 2" && Button.selected !== "radius 3"){
             this.drawGuide();
         }
 
