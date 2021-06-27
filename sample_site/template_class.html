@@ -33,11 +33,14 @@
 			</div>
 			<div class="nav-bar">
 				<ul class="nav">
-					<li><a href="#">Sprint 1</a></li>
-					<li><a href="#">Sprint 2</a></li>
-					<li><a href="#">Sprint 3</a></li>
-					<li><a href="#">Sprint 4</a></li>
-					<li><a href="#">Sprint 5</a></li>
+					<li><a href="#1">Sprint 1</a></li>
+					<li><a href="#2">Sprint 2</a></li>
+					<li><a href="#3">Sprint 3</a></li>
+					<li><a href="#4">Sprint 4</a></li>
+					<li><a href="#5">Sprint 5</a></li>
+					<li><a href="#6">Sprint 6</a></li>
+					<li><a href="#7">Sprint 7</a></li>
+					<li><a href="#8">Sprint 8</a></li>
 				</ul>
 			</div>
 			<div class="content">
@@ -51,10 +54,25 @@
 
     <!-- Heading levels -->
 	<h1> Starting Up</h1>
+	<h3> Using Github to implement Agile processes</h3>
+        <p>Agile processes management is an iterative development methodology which revolves around version control and developing 
+		improvements through testing and trialling. Each sprint or version my program is tested and finished before creating a new file 
+		and coyping what has been done across. This allowed me to access previous versions wihtout having to undo any of my work.  
+		Github is a version control software which I have been using to store each version or sprint of my code. It has also provided me 
+		with basic Kanban boards which I have used to create and overall plan or my entire program as well as individual plans or each sprint. 
+		At the end of each sprint, I complete a git 'commit' which uploads the most recent version of my sprint onto Github. </p>
+                 
 	<h3>Project Backlog</h3>
 	<img class="img-responsive" src="assets/img/projectbacklog1.JPG" alt="">
-<hr>
-    <h1>Sprint One</h1>
+
+
+	   <video class="center" controls>
+		   <source src="assets/vids/projectbacklog.mp4" type="video/mp4">
+		 Your browser does not support the video tag.
+		 </video>
+   <hr>
+
+    <h1 id="1">Sprint One</h1>
 	<h2>Aim:</h2>
 	<h4>The aim of my first sprint is to create a webpage with a ccanvas that is able to draw a rectangle by clicking 
 		and dragging the mouse and then releasing it. </h4><br>
@@ -103,7 +121,7 @@
 
 
 <hr>
-<h1>Sprint Two</h1>
+<h1 id="2">Sprint Two</h1>
 
 <h2>Aim:</h2>
 	<h4>The aim of my second sprint was to create a dedicated drawing canvas within the webpage, 
@@ -225,7 +243,7 @@
 	 that it is able to complete, as I have now set up the basic layput and functionality of mouse actions etc.</p>
 
 
- <h1>Sprint Three</h1>
+ <h1 id="3">Sprint Three</h1>
  <h2>Aim:</h2>
  <h4>The aim of this sprint is to create a button as an option to change the shape that is being drawn. 
 	 Clicking the button means that when you click and drag the mouse, it will draw an elllipse instead of a rectangle.</h4><br>
@@ -275,187 +293,229 @@
 <hr>
 <br>
 
-	<h1>Sprint Four</h1>
+	<h1 id="4">Sprint Four</h1>
 	<h2>Aim:</h2>
 	<h4>The aim of this sprint is to introduce colour management into the canvas. This will enable the user to pick and choose colours for their shapes, 
 		a simple but useful function of the drawing page. </h4><br>
    <h3>Plan / Kanban</h3>
-   <img class="img-responsive" src="assets/img/sprint4/sprint_4_kanban" alt=""><br>
-   <h3>Link to the Canvas Page: <a href="file:///Users/niabutler/Documents/DIG2021/internal/NiasWebCanvas.github.io/version_3/sprint_3.html">Sprint 3 Canvas Webpage</a></h3>
+   <img class="img-responsive" src="assets/img/sprint4/sprint_4_kanban.jpg" alt=""><br>
+   <h3>Link to the Canvas Page: <a href="file:///Users/niabutler/Documents/DIG2021/internal/NiasWebCanvas.github.io/version_4/sprint_4.html">Sprint 4 Canvas Webpage</a></h3>
    <br><br>
    <h3>Testing</h3>
    <div class="col-container">
 	<div class="col">
-		<h4> Test 1</h4>
-   <p> his.... </p>
-   </div>
-   <div class="col">
-	   <video class="center" controls>
-		   <source src="assets/vids/sprint_3_buttonboundaries_test.mp4" type="video/mp4">
+		<video class="center" controls>
+		   <source src="assets/vids/sprint_4_swatchtest1.mp4" type="video/mp4">
 		 Your browser does not support the video tag.
 		 </video>
+		<h4> Test 1 - Testing two swatches</h4>
+   <p> First I created two swatches to test the function of them. I tested using boundary checks by increasing the linewidth 
+   of the ouside when hovered on. I also tested using the colour swatches to change the colour of the shape being drawn. Something 
+   that I learned from these tests was that the new shape is always drawn in front of what ever is onthe canvas. I like that this 
+   is happening because I think that it makes more sense for the user when they are creating new shapes. 
+   One thing that I could do to improve this in the future is for the shape to be able to change when it has already been drawn. 
+   At the moment the colour must be chosen first before drawing the shape and once htath happens it cannot change. I would do 
+   this by setting a creating a static variable and when clicked is selected so the colour can change. However this is not high 
+   on my priority list so I will wait to try this near the end. Another thing I have come up with to add to my project backlog 
+   would be to be able to select shapes and move them around the screen. This is also not a high priority so can be thought about later.</p>
+   </div>
+
+   <div class="col"><br>
+	   <img class="img-responsive" src="assets/img/sprint4/swatch_done.jpg" alt=""><br><br>
+	   <h4> Test 2 - final testing</h4>
+	   <p> An error that I came across while testing is that my swatches weren't showing up when I tried to run them through a loop. 
+	   I decided to run a console log "console.log("colArray")" to check and see if my list of colours was working and I found out that 
+	   it wasn't recognising the list as colour values and that's why the swatches weren't printing on the screen. However I fixed this 
+	   issue by cleaning up my code. This was my final test and everything was working properly.</p>
    </div>
    </div>
    <div class="col-container">
+	<div class="col">  
+</div></div>
+
+<h3>Reflect</h3>
+<p> Colour management is a fundamental part of my canvas webpage and it's important that I have completed it. From here I can now build on 
+other functions of the canvas such as more shapes or a paintbrush function. </p><hr>
+
+	   <h1 id="5">Sprint Five</h1>
+	<h2>Aim:</h2>
+	<h4>The aim of this sprint is to add more shapes to the canvas. It is meant to be a simple sprint to give the canvas more bulk. 
+	I want to add a star and a circle function as extra shapes.</h4><br>
+   <h3>Plan / Kanban</h3>
+   <img class="img-responsive" src="assets/img/sprint5/sprint_5_kanban.jpg" alt=""><br>
+   <h3>Link to the Canvas Page: <a href="file:///Users/niabutler/Documents/DIG2021/internal/NiasWebCanvas.github.io/version_5/sprint_5.html">Sprint 5 Canvas Webpage</a></h3>
+   <br><br>
+   <h3>Testing</h3>
+   <div class="col-container">
 	<div class="col">
-		<h4> Test 2 </h4>
-   <p> </p>
+		<h4> Testing the star function</h4>
+   <p> When I first tested the star function, it came up with many errors as seen on the right. If the draw  guide was more of a square shape, 
+   then the star ended up being a circle shape with a fringed edge, but if the draw guide was a wide rectangle it gave more of a multi point star, 
+   which actually looked quite cool however it wasn’t working how it was meant to. And lastly when the draw guide was a longer rectangle (h>w) it 
+   created a circle with a hole in the middle. After lots of fiddling around I found the source of the problem for the number of points - the function 
+   was using h to determine the number of points so when h was bigger than w, there would be many point on the big radius as well as the smaller r and 
+   that’s why there is a circle in the middle as well. From this I have learnt that the number of outside points a star has will also determine the number 
+   of inside points, and if there are lots it will look like a hole in the centre instead of the centre of a star. </p>
    </div>
    <div class="col">
 	   <video class="center" controls>
-		   <source src="assets/vids/sprint_3_test1.mp4" type="video/mp4">
+		   <source src="assets/img/sprint5/star_error2.mp4" type="video/mp4">
 		 Your browser does not support the video tag.
 		 </video>
    </div>
+   
    </div>
    
    <h3>Reflect</h3>
-   <p> In this sprint, I added a major component to the canvas. Buttons will be used from here forward for any other functions 
-	   that I add to the canvas. It was important that I tested the buttons to check if the boundaries were working and being picked up by the mouse. 
-	   This will hopefully erase any futher problems in the future and allow for easy building to the web canvas. Next sprint I would like to add in some colour 
-	   management, which will also include buttons and try to create a gradient slider. </p>
+   <p> In this sprint, I had some trouble with creating a working star class, however after fixing and changing a couple of things I got it working again how I wanted it to. 
+   Creating the circle class was quite simple as I just had to create a class where the ellipse had the same size radius for both the x and the y axis. I have decided to move 
+   on to creating a paint bursh feature next sprint and will add the final shapes - polygon and line functions, in another sprint. </p>
+<hr>
 
-
-	   <h1>Sprint Five</h1>
+<h1 id="6">Sprint Six</h1>
 	<h2>Aim:</h2>
 	<h4>The aim of this sprint is to introduce colour management into the canvas. This will enable the user to pick and choose colours for their shapes, 
 		a simple but useful function of the drawing page. </h4><br>
    <h3>Plan / Kanban</h3>
-   <img class="img-responsive" src="assets/img/sprint3/sprint_3_kanban.jpg" alt=""><br>
-   <h3>Link to the Canvas Page: <a href="file:///Users/niabutler/Documents/DIG2021/internal/NiasWebCanvas.github.io/version_3/sprint_3.html">Sprint 3 Canvas Webpage</a></h3>
+   <img class="img-responsive" src="assets/img/sprint6/sprint_6_kanban.jpg" alt=""><br>
+   <h3>Link to the Canvas Page: <a href="file:///Users/niabutler/Documents/DIG2021/internal/NiasWebCanvas.github.io/version_6/sprint_6.html">Sprint 6 Canvas Webpage</a></h3>
+   <br><br>
+   <h3>Boundary Checks</h3>
+   <div class="col-container">
+	<div class="col">
+	<h4> Pythagorus Distance Check for Circle Buttons</h4>
+   <p>For the buttons that control the size of the brush for the paintbrush function, I decided to use circles 
+   to indicate the width of the brush. To do this I had to create a different button class which was shaped as a circle. 
+   The difference between this and a normal button first of all is the shape but because this was different I also had to 
+   update the boundaries of the button so that the mouse event listeners would pick up the boundaries more accurately. For 
+   this I had to use a pythagorus distance check which measures how far away the mouse is compared to the radius of the circle. 
+   On the right at the top is the normal bounds check for the rectangle buttons and on the bottom is the new pythagorus boundary check for the circle buttons </p>
+		
+   </div>
+
+   <div class="col">
+   <pre style="font-size: 1.2em; margin:0;">
+		<code class="javscript"> inBoundsCheck(xM, yM, x, y, w, h){
+    	if( xM > x && xM < x+w && yM > y && yM < y+h){
+        	return true;
+    	}else{
+        	return false;
+    	}
+
+	// -------------------------------------------------
+	
+	// Pythagorus Distance check
+    // @ param x,y, positions of the mouse and of 
+	// point circle and radius of point circle (number)
+    // @ return boolean
+   	inBoundsCheck(xM, yM, x, y, r){
+    	var d = Math.sqrt( Math.pow(xM-x, 2) + 
+		Math.pow(yM-y, 2));
+    	if(d &#60 r){
+        	return true;
+    	}else{
+        	return false;
+    	}
+ 	}
+    </code>
+		</pre>
+</div>
+
+<div class="col">
+	   <h4> Testing the different brush sizes</h4>
+	   <p> After creating three different circle buttons to control the size of the 'brush', I decided to test them to see 
+	   if they were working properly. When doing this I discovered that when another brush size was selected and used, that 
+	   it drew both the new one and the previous brush size and colour. This issue came up because when another brush was selected, 
+	   the previous brush wasn't being deselected or it didn't realise that the mouseUp meant the function was finished. To fix this 
+	   I implemented a new part to the class which had a variable that controled the selection of each button with true or false.
+	   </p>
+
+	   <h4> Frame updates</h4>
+	   <p> One thing that I noticed when I was creating my paintbrush function, is that if the mouse moves swiftly across the screen 
+	   the brush appears broken as it shows circles instead of a line. This is because the screen updates at 40 frames per second so 
+	   if the mouse moves faster than that, then not as many circles are drawn, so the line appears broken. I tried to fix this however 
+	   I am unable to change the frame update speed as it depends on which browser is being used so this is something that will have 
+	   to stay in program.</p>
+   
+   </div>
+   
+	<div class="col">  
+	<video class="center" controls>
+		   <source src="assets/vids/sprint6_paintbrush_test.mp4" type="video/mp4">
+		 Your browser does not support the video tag.
+		 </video>
+</div></div>
+
+<h3>Reflect</h3>
+<p> The paintbrush feature was quite low down on my project backlog so I am glad I have been able to create it. 
+After creating a new circle button, new inbounds check for the circle button and a deselection function, thorough 
+testing was carried out and my paint brush feature now works properly. </p><hr>
+
+
+<h1 id="7">Sprint Seven</h1>
+	<h2>Aim:</h2>
+	<h4>The aim of this sprint is to create a polygon shape and be able to change thet number of sides the polygon has. 
+	I would also Like to add in a draw line option where the user can choose the width of the line.  </h4><br>
+   <h3>Plan / Kanban</h3>
+   <img class="img-responsive" src="assets/img/sprint_7_kanban.jpg" alt=""><br>
+   <h3>Link to the Canvas Page: <a href="file:///Users/niabutler/Documents/DIG2021/internal/NiasWebCanvas.github.io/version_7/sprint_7.html">Sprint 7 Canvas Webpage</a></h3>
    <br><br>
    <h3>Testing</h3>
    <div class="col-container">
-	<div class="col">
-		<h4> Test 1</h4>
-   <p> his.... </p>
-   </div>
    <div class="col">
-	   <video class="center" controls>
-		   <source src="assets/vids/sprint_3_buttonboundaries_test.mp4" type="video/mp4">
+		<h4> Testing the polygon and line function</h4>
+   <p> Here I am testing both the line function and the polygon. All of the shapes / widths of the lines change when the button is 
+   clicked which means it is working properly however if I choose a line width for the line, it changes the width of the draw guide 
+   box as well. When I went through my code I found that the code I had used to set the width of the draw guide was not a proper java 
+   script function and that I had ctx.linewidth in stead of ctx.lineWidth with a capital W. When I changed this, the draw guide started working 
+   properly again.</p>
+   </div>
+
+	<div class="col">
+		<video class="center" controls>
+		   <source src="assets/vids/sprint_7_test1.mp4" type="video/mp4">
 		 Your browser does not support the video tag.
 		 </video>
-   </div>
-   </div>
+		 </div>
+		
+<h3>Reflect</h3>
+<p> My canvas now has many different working functions so is near the end of completion. In this sprint I had to create a text class because 
+I needed to show that a polygon could be made not just have buttons with numbers on them otherwise the uuser wouldn't understand. This problem 
+was easy to fix and I also used the text class for the paintbrush and line functions. Next sprint I will add some final touches to my canvas and then it will be finished!</p><hr>
+
+
+<h1 id="8">Sprint Eight</h1>
+	<h2>Aim:</h2>
+	<h4>The aim of this sprint is to add some final touches to my canvas. This will include an animated rotating star, undo and restart options and an update ot the draw guide class.  </h4><br>
+   <h3>Plan / Kanban</h3>
+   <img class="img-responsive" src="assets/img/sprint_8_kanban.jpg" alt=""><br>
+   <h3>Link to the Canvas Page: <a href="file:///Users/niabutler/Documents/DIG2021/internal/NiasWebCanvas.github.io/version_8/sprint_8.html">Sprint 8 Canvas Webpage</a></h3>
+   <br><br>
+   <h3>Testing</h3>
    <div class="col-container">
-	<div class="col">
-		<h4> Test 2 </h4>
-   <p> In this test, I am checking that everything is running functionally as I have completed all the steps in my sprint 3. One thing 
-	   that I picked up in this test was that if I wanted to draw a shape on top of another I could, however I couldn't see how big I was 
-	   drawing the new shape as the draw guide did not show up in front of the shape that was already there. This is a problem with the 
-	   ordering of objects on the screen, something that I will look into next sprint. Something that is working well is that when selected the button 
-	   is staying selected when the user is drawing their shape so that they know which shape they have selected and are drawing. 
-	   This is clear communication to the user of what the program is doing. </p>
-   </div>
    <div class="col">
-	   <video class="center" controls>
-		   <source src="assets/vids/sprint_3_test1.mp4" type="video/mp4">
+		<h4> Testing the undo, and restart buttons</h4>
+   <p> When I first tested these buttons both the undo and the restart button cleared the whole canvas so the undo button clearly was not working. 
+   However the difference between the two was that the restart button cleared all of the objects at once, but the undo button cleared them one by 
+   one just very quickly. To see what was hapenning I console logged the object set to see how each object was disappearing and this confirmed my 
+   suspicions. Each object was being removed one by one because there was nothing stopping the button from being unselected. To change this I added 
+   Button.selected=""; to the end of each button function (undo and restart) to de select the button. When I tested it again everything worked and 
+   the unod button only removed the last object in the object set. </p>
+   </div>
+
+	<div class="col">
+		<video class="center" controls>
+		   <source src="assets/vids/sprint_8_undo:restart_test.mp4" type="video/mp4">
 		 Your browser does not support the video tag.
 		 </video>
-   </div>
-   </div>
-   
-   <h3>Reflect</h3>
-   <p> In this sprint, I added a major component to the canvas. Buttons will be used from here forward for any other functions 
-	   that I add to the canvas. It was important that I tested the buttons to check if the boundaries were working and being picked up by the mouse. 
-	   This will hopefully erase any futher problems in the future and allow for easy building to the web canvas. Next sprint I would like to add in some colour 
-	   management, which will also include buttons and try to create a gradient slider. </p>
+		 </div>
+		
+<h3>Reflect</h3>
+<p> My canvas now has many different working functions so is near the end of completion. In this sprint I had to create a text class because 
+I needed to show that a polygon could be made not just have buttons with numbers on them otherwise the uuser wouldn't understand. This problem 
+was easy to fix and I also used the text class for the paintbrush and line functions. Next sprint I will add some final touches to my canvas and then it will be finished!</p><hr>
 
 
- <hr>
-<!-- Paragraphs -->
-<h3>Example code insert (don't do too much of this)</h3>
-<pre style="font-size: 1.5em;">
-<code class="javscript"> function inBoundsCheck(xM, yM, x, y, w, h){
-        if( xM > x && xM < x+w && yM > y && yM < y+h){
-            return true;
-        }else{
-            return false;
-        }
-    }</code>
-</pre>
- 
-            <hr>     
-                
-                <h3>Video Test Example</h3>
-
-
-				<video class="center" controls>
-					<source src="assets/vids/littleTest.mp4" type="video/mp4">
-				  Your browser does not support the video tag.
-				  </video>
-					<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-					<hr>
-
-					<!-- Responsive images -->
-					<h3>Example image placements</h3>
-					<p>For images to be responsive (so that they will rescale to suit the width of the parent, use the <code>.img-responsive</code> class.</p>
-					<img class="img-responsive" src="assets/img/place_holder.png" alt="">
-                <hr>
-                <div class="col-container">
-                <div class="col">
-               <img class="img-responsive" src="assets/img/place_holder_sm.jpg" alt="">
-                <p>Ut wisi enim ad minim veniam, <a href="#">quis nostrud exerci tation ullamcorper</a> suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel.</p>
-                </div>
-                 <div class="col">
-                <img class="img-responsive" src="assets/img/place_holder_sm.jpg" alt="">
-                <p>Ut wisi enim ad minim veniam, <a href="#">quis nostrud exerci tation ullamcorper</a> suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel.</p>
-                </div>
-                </div>
-                <hr>
-               
-              
-
-					<!-- Lists -->
-					<h3>Unordered list</h3>
-					<p>Unordered lists are used to markup lists where list items do not require numbering.</p>
-					<ul>
-						<li>Ut wisi enim ad minim veniam</li>
-						<li>Quis nostrud exerci tation</li>
-						<li>Lamcorper suscipit lobortis nis</li>
-						<li>Ut aliquip ex ea commodo consequat</li>
-						<li>Duis autem vel eum iriure dolor</li>
-					</ul>
-					<hr>
-
-					<h3>Ordered list</h3>
-					<p>Ordered lists are used to markup lists where list items require numbering.</p>
-					<ol>
-						<li>Hendrerit in vulputate velit esse</li>
-						<li>Olestie consequat</li>
-						<li>Vel illum dolore eu feugiat</li>
-						<li>Nulla facilisis at vero eros</li>
-						<li>Accumsan et iusto odio</li>
-					</ol>
-					<hr>
-
-					<h3>Unstyled list</h3>
-					<p>You can make the list unstyled using the <code>list-unstyled</code> class.</p>
-					<ul class="list-unstyled">
-						<li>Ut wisi enim ad minim veniam</li>
-						<li>Quis nostrud exerci tation</li>
-						<li>Lamcorper suscipit lobortis nis</li>
-						<li>Ut aliquip ex ea commodo consequat</li>
-						<li>Duis autem vel eum iriure dolor</li>
-					</ul>
-					<hr>
-
-					<h3>Inline list</h3>
-					<p>You can make the list display inline using the <code>list-inline</code> class.</p>
-					<ul class="list-inline">
-						<li>One</li>
-						<li>Two</li>
-						<li>Three</li>
-						<li>Four</li>
-					</ul>
-					<hr>
-
-				
-
-					<h3>Buttons</h3>
-					<p>You can apply the <code>btn</code> class to any element that requires a button style.</p>
-					<p><a href="#" class="btn">Submit</a></p>
-					<hr>
 
 
 

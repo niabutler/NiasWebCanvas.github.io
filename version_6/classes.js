@@ -94,13 +94,13 @@ mClick(e){
     if(this.inBounds){
         Button.clicked = this;
         Button.selected = this.text;
+        CircleButton.selected = "";
     }
 }
 
 mMove(e){
     this.xMouse = e.offsetX;
     this.yMouse = e.offsetY;
-    // console.log(this.xMouse);
     this.inBounds = this.inBoundsCheck(this.xMouse, this.yMouse, this.x, this.y, this.w, this.h);
   
 }
@@ -117,7 +117,6 @@ update(){
     this.draw();
 }
 
-
 draw(){
     ctx.strokeStyle = this.outline;
     ctx.fillStyle = this.fill;
@@ -129,7 +128,6 @@ draw(){
 
     ctx.fillStyle = this.outline;
     
-
     if(this.inBounds || Button.clicked == this){
         ctx.lineWidth = 10;
         ctx.fillStyle = this.over;
@@ -165,7 +163,6 @@ class Text{
         this.w = w;
         this.h = h;
         this.textCol = col;
-        //this.textFill = c2;
     }
 
     update(){
@@ -179,7 +176,6 @@ class Text{
     ctx.textAlign = 'center';
     ctx.font=myFont;
     ctx.fillText(this.text, this.x + this.w/2, this.y + this.h/2);
-
     }
 }
 
@@ -196,13 +192,13 @@ class Swatch{
   
     canvas.addEventListener('click', this.mClick.bind(this));
     canvas.addEventListener('mousemove', this.mMove.bind(this));
-  
 
     this.xMouse = 0;
     this.yMouse = 0;
     this.inBounds = false;
     this.outline_stroke = 2;
 }
+
 
 mClick(e){
     var swatchColour = this.fill;
@@ -212,11 +208,11 @@ mClick(e){
     }
 }
 
+
 mMove(e){
     this.xMouse = e.offsetX;
     this.yMouse = e.offsetY;
     this.inBounds = this.inBoundsCheck(this.xMouse, this.yMouse, this.x, this.y, this.s, this.s);
- 
     if(this.inBounds == true || Swatch.clicked == this){
         this.outline_stroke = 4;
     }else{
@@ -248,7 +244,7 @@ drawSquare(x, y, s, col){
     ctx.stroke();
 }
 }
- Swatch.selected = "rgb(0,0,255)";
+Swatch.selected = "rgb(0,0,0)";
 
 
 class Star{
@@ -298,14 +294,13 @@ class Star{
     }
 }
 
-console.log("point js has been called")
 
+// ------------------------------------------------------------------------------------------Point
 class Point{
     // set variables to use
     constructor(r, col){
         this.r = r;
         this.col = col;
-        // continually registering the mouse position
         this.xMouse = 0;
         this.yMouse = 0;
         this.circleSet = [];
@@ -319,37 +314,34 @@ class Point{
     }
 
     mDown(e){
-        // if the mouse is pressed and the mouse is inside the point circle, 
-        // set the object as taken
+        // if the mouse is down set mouse down to true
         this.mouseDown = true;
-        console.log("mouse down is true")
     }
 
     mMove(e){
-        // event registered every time the mouse moves
-        // object variable is updated with current mouse position
+        // x and y variable is updated with current mouse position
         this.xMouse = e.offsetX;
         this.yMouse = e.offsetY;
-        // update boundary boolean
         if(this.mouseDown == true && this.close == false){
-            console.log(this.xMouse, this.yMouse)
             var temp = new Ellipse(this.xMouse, this.yMouse, this.r, this.r, 0, 0, 2 * Math.PI, this.col)
             this.circleSet.push(temp);
         }
     }
 
     mUp(e){
-        // where mouse goes up, set taken point as nothing
-        // this deselects the point
+        // set mouse down to false
+        // set this.close to true to finish the circle loop
         this.mouseDown = false;
-        console.log("mouse down is false")
         this.close = true;
     }
 
     update(){
-        // make x, y, coordinates of the point the same as the mouse position
-        // if the mouse has been taken
+        if(this.mouseDown == true && this.close == false){
+            var temp = new Ellipse(this.xMouse, this.yMouse, this.r, this.r, 0, 0, 2 * Math.PI, this.col)
+            this.circleSet.push(temp);
+        }
 
+        // update all items in the circle set list
         for(var i=0 ; i< this.circleSet.length; i++){
             this.circleSet[i].update()
         }}
@@ -360,7 +352,6 @@ class Point{
         
 
     draw(){
-        //console.log("draw has been called")
         // change fill state if mouse is over or the point is selected
         if(this.inBounds || Point.taken == this){
             ctx.fillStyle = this.over;
@@ -374,23 +365,9 @@ class Point{
         ctx.fill();
         ctx.stroke();
     }
-
-    
-
- //Make x, y coordinates of point available outside of object
-// @ return number
-
-
-getX(){
-    return this.x;
 }
 
-getY(){
-    return this.y;
-}
-}
-
-
+// ---------------------------------------------------------------------------------------- CircleButton
 class CircleButton{
     // set variables to use
     constructor(x, y, r, c1, c2, name){
@@ -398,12 +375,9 @@ class CircleButton{
     this.y = y;
     this.r = r;
     this.name = name
-    //outline
     this.outline = c1;
-    //fill
     this.fill = c2;
     
-  
     canvas.addEventListener('click', this.mClick.bind(this));
     canvas.addEventListener('mousemove', this.mMove.bind(this));
   
@@ -415,8 +389,10 @@ class CircleButton{
 
 mClick(e){
     if(this.inBounds){
-        Button.clicked = this;
-        Button.selected = this.name;
+        CircleButton.clicked = this;
+        CircleButton.selected = this.name;
+        // deselect any of the other shape buttons
+        Button.selected = "";
     }
 }
 
@@ -425,29 +401,22 @@ mMove(e){
     this.yMouse = e.offsetY;
     this.inBounds = this.inBoundsCheck(this.xMouse, this.yMouse, this.x, this.y, this.r);
  
-   if(this.inBounds == true || Button.clicked == this){
+   if(this.inBounds == true || CircleButton.clicked == this){
         this.outline_stroke = 4;
     }else{
         this.outline_stroke= 2;
     }
 }
 
-mUp(e){
-        // where mouse goes up, set taken point as nothing
-        // this deselects the point
-        Button.clicked ="";
-            
-    }
 
-//Pythagorus Distance check
-  //  @ param x,y, positions of the mouse and of point circle and radius of point circle (number)
-   // @ return boolean
-    
+
+    // Pythagorus Distance check
+    // @ param x,y, positions of the mouse and of point circle and radius of point circle (number)
+    // @ return boolean
    inBoundsCheck(xM, yM, x, y, r){
     var d = Math.sqrt( Math.pow(xM-x, 2) + Math.pow(yM-y, 2));
     if(d<r){
         return true;
-        
     }else{
         return false;
     }
@@ -461,13 +430,9 @@ update(){
     ctx.strokeStyle = this.outline;
     ctx.stroke();
     ctx.fill();
-
-    if(Point.mouseDown = false){
-        Button.selected = "";
-    }
+}
 }
 
-}
-Button.clicked = "";
-Button.selected = "";
+CircleButton.clicked = "";
+CircleButton.selected = "";
 

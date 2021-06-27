@@ -36,13 +36,13 @@ class ControlObject{
         this.inBounds = this.inBoundsCheck(this.xMouseStart, this.yMouseStart, this.x, this.y, this.w, this.h);
 
         if(this.inBounds == true){
-            if(Button.selected == "radius 1"){
+            if(CircleButton.selected == "radius 1"){
                 var temp = new Point(10, Swatch.selected);
                 this.objectSet.push(temp);
-            }else if(Button.selected == "radius 2"){
+            }else if(CircleButton.selected == "radius 2"){
                 var temp = new Point(13, Swatch.selected);
                 this.objectSet.push(temp);
-            }else if(Button.selected == "radius 3"){
+            }else if(CircleButton.selected == "radius 3"){
                 var temp = new Point(50, Swatch.selected);
                 this.objectSet.push(temp);
             }
@@ -53,8 +53,7 @@ class ControlObject{
     mMove(e){
         // when the mouse is moving...
         this.xMouse = e.offsetX;
-        this.yMouse = e.offsetY;
-        //console.log("mouse move")   
+        this.yMouse = e.offsetY;  
     }
 
     mUp(e){
@@ -116,11 +115,11 @@ class ControlObject{
         this.drawRect(this.x, this.y, this.w, this.h, "rgb(105,105,105)")
         // clip anything outside of the drawing area
         ctx.clip()
-        if(this.mouseDown == true && this.inBounds == true && Button.selected !== "radius 1" && Button.selected !== "radius 2" && Button.selected !== "radius 3"){
+        if(this.mouseDown == true && this.inBounds == true && CircleButton.selected !== "radius 1" && CircleButton.selected !== "radius 2" && CircleButton.selected !== "radius 3"){
             this.drawGuide();
         }
 
-        // update items in the list
+        // update all items in the object set list
         for(var i=0 ; i< this.objectSet.length; i++){
             this.objectSet[i].update()
         }
@@ -131,7 +130,7 @@ class ControlObject{
     drawGuide(){
         var w = this.xMouse - this.xMouseStart;
         var h = this.yMouse - this.yMouseStart;
-        this.drawRectGuide(this.xMouseStart, this.yMouseStart, w, h, "rgb(0,0,255)");
+        this.drawRectGuide(this.xMouseStart, this.yMouseStart, w, h, "rgb(255,165,0)");
     }
 
     drawRect(x,y,w,h,col){
