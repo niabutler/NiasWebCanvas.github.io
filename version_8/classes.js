@@ -1,3 +1,4 @@
+console.log("classes.js is called")
 // ------------------------------------------------------------------------------------------ Rectangle
 class Rectangle{
     constructor(x,y,w,h,col){
@@ -20,8 +21,10 @@ class Rectangle{
 }
 }
 
+
+// ------------------------------------------------------------------------------------------ Polygon
 class Polygon{
-    // constructor, centre of polyon coordinates, radius length
+    // constructor centre of polyon coordinates, radius length, number of sides, colour
     constructor(xC, yC, r, n, col){
         this.r = r;
         this.xC = xC;
@@ -33,16 +36,16 @@ class Polygon{
     draw(){
         var y = 0;
         var x = 0;
-
+        // draw shape
         ctx.beginPath();
         ctx.lineWidth = 5;
         
         for(var i=0; i<this.n; i++){
             x = this.xC + this.r*Math.cos(i*2*Math.PI / this.n)
             y = this.yC + this.r*Math.sin(i*2*Math.PI / this.n)
-            //console.log(x,y)
             
             if(i==0){
+                // starting coordinates
                 ctx.moveTo(x, y);
             }else{
                 ctx.lineTo(x, y);
@@ -61,9 +64,10 @@ class Polygon{
 
 }
 
-// ------------------------------------------------------------------------------------------ Line
 
+// ------------------------------------------------------------------------------------------ Line
 class Line{
+    // constructor start coordinates, line to coordinates, width, colour
     constructor(x1, y1, x2, y2, w, col){
         this.x1 = x1;
         this.x2 = x2;
@@ -78,6 +82,7 @@ class Line{
     }
 
     draw(){
+        // draw shape
         ctx.beginPath();
         ctx.moveTo(this.x1, this.y1);
         ctx.lineTo(this.x2, this.y2);
@@ -85,13 +90,12 @@ class Line{
         ctx.lineWidth = this.width;
         ctx.stroke();
     }
-
 }
 
 
 // ------------------------------------------------------------------------------------------ Ellipse
 class Ellipse{
-    // set variables to use
+    // constructor x, y, w, h, rotation, start angle, end angle, colour
     constructor(x, y, w, h,  rotation, startAngle, endAngle, col){
         this.xC = x + w/2;
         this.yC = y + h/2;
@@ -107,16 +111,19 @@ class Ellipse{
     }
 
     draw(){
+        // draw shape
         ctx.beginPath();
+        // draw ellipse using parameters
         ctx.ellipse(this.xC, this.yC, Math.abs(this.xR), Math.abs(this.yR), this.rotation, this.SA, this.EA)
         ctx.fillStyle = this.col;
         ctx.fill();
     }
 }
 
+
 // ------------------------------------------------------------------------------------------ Circle
 class Circle{
-    // set variables to use
+    // constructor centre point coordinates, radius length, rotation, start angle, end angle, colour
     constructor(x, y, r,  rotation, startAngle, endAngle, col){
         this.xC = x;
         this.yC = y;
@@ -131,16 +138,19 @@ class Circle{
     }
 
     draw(){
+        // draw shape
         ctx.beginPath();
+        // draw ellipse using parameters
         ctx.ellipse(this.xC, this.yC, Math.abs(this.r), Math.abs(this.r), this.rotation, this.SA, this.EA)
         ctx.fillStyle = this.col;
         ctx.fill();
     }
 }
 
+
 // ------------------------------------------------------------------------------------------ Button
 class Button{
-    // set variables to use
+    // constructor x, y, width, height, button text, outline colour, fill colour, hover colour
     constructor(x, y, w, h, text, c1, c2, c3){
     this.x = x;
     this.y = y;
@@ -160,7 +170,6 @@ class Button{
 }
 
 mClick(e){
-   
     if(this.inBounds){
         Button.clicked = this;
         Button.selected = this.text;
@@ -169,6 +178,7 @@ mClick(e){
 }
 
 mMove(e){
+    // x and y variable is updated with current mouse position
     this.xMouse = e.offsetX;
     this.yMouse = e.offsetY;
     this.inBounds = this.inBoundsCheck(this.xMouse, this.yMouse, this.x, this.y, this.w, this.h);
@@ -176,11 +186,11 @@ mMove(e){
 }
 
 inBoundsCheck(xM, yM, x, y, w, h){
+    // check for boundaries, return true or false if inside or outside boundaries
     if(xM > x && xM < x+w && yM > y && yM < y+h){
         return true;
     }else{return false;
     }
-
 }
 
 update(){
@@ -188,16 +198,21 @@ update(){
 }
 
 draw(){
+    // draw shape
     ctx.strokeStyle = this.outline;
     ctx.fillStyle = this.fill;
     ctx.lineWidth = 5;
     ctx.beginPath();
+    // draw rectangle using parameters
     ctx.rect(this.x, this.y, this.w, this.h);
     ctx.fill();
     ctx.stroke();
 
     ctx.fillStyle = this.outline;
     
+    // if mouse is inside button boundary
+    // and button is clicked
+    // change fill style to new colour
     if(this.inBounds || Button.clicked == this){
         ctx.lineWidth = 10;
         ctx.fillStyle = this.over;
@@ -217,7 +232,6 @@ draw(){
     ctx.font=myFont;
     ctx.fillText(this.text, this.x + this.w/2, this.y + this.h/2);
 }
-
 }
 
 Button.clicked = "";
@@ -226,7 +240,7 @@ Button.selected = "Rectangle";
 
 // ------------------------------------------------------------------------------------------ Text
 class Text{
-    // set variables to use
+    // constructor text, x, y, w, h, colour
     constructor(text, x, y, w, h, col){
         this.text = text;
         this.x = x;
@@ -250,9 +264,10 @@ class Text{
     }
 }
 
+
 // ------------------------------------------------------------------------------------------ Swatch
 class Swatch{
-    // set variables to use
+    // constructor x, y, side length, outline colour, fill colour
     constructor(x, y, s, c1, c2){
     this.x = x;
     this.y = y;
@@ -282,6 +297,7 @@ mClick(e){
 
 
 mMove(e){
+    // x and y variable is updated with current mouse position
     this.xMouse = e.offsetX;
     this.yMouse = e.offsetY;
     this.inBounds = this.inBoundsCheck(this.xMouse, this.yMouse, this.x, this.y, this.s, this.s);
@@ -294,6 +310,7 @@ mMove(e){
 
 
 inBoundsCheck(xM, yM, x, y, w, h){
+    // check for boundaries, return true or false if inside or outside boundaries
     if(xM > x && xM < x+w && yM > y && yM < y+h){
         return true;
     }else{
@@ -311,6 +328,7 @@ drawSquare(x, y, s, col){
     ctx.lineWidth = this.outline_stroke;
     ctx.strokeStyle =  this.outline;
     ctx.beginPath();
+    // draw rectangle using parameters
     ctx.rect(x, y, s, s);
     ctx.fill();
     ctx.stroke();
@@ -318,9 +336,10 @@ drawSquare(x, y, s, col){
 }
 Swatch.selected = "rgb(0,0,0)";
 
+
 // ------------------------------------------------------------------------------------------ Star
 class Star{
-    // set variables to use
+    // constructor centre point coordinates, radius length, number of points, fill colour
     constructor(xC, yC, r, points, fillStyle){
         this.r = r;
         this.xC = xC;
@@ -336,6 +355,7 @@ class Star{
         var r_small = this.r/3
         var R;
 
+        // draw shape
         ctx.beginPath();
         ctx.lineWidth = 5;
 
@@ -366,9 +386,10 @@ class Star{
     }
 }
 
+
 // ------------------------------------------------------------------------------------------ Pinwheel
 class Pinwheel{
-    // set variables to use
+    // constructor centre point coordinates, radius length, number of points, fill colour
     constructor(xC, yC, r, points, fillStyle){
         this.r = r;
         this.xC = xC;
@@ -385,6 +406,7 @@ class Pinwheel{
         var r_small = this.r/3
         var R;
 
+        // draw shape
         ctx.beginPath();
         ctx.lineWidth = 5;
 
@@ -399,8 +421,10 @@ class Pinwheel{
             y = this.yC + R*Math.sin(i*2*Math.PI/n  +this.counter/50 )
             
             if(i==0){
+                // starting position
                 ctx.moveTo(x, y);
             }else{
+                // all other points
                 ctx.lineTo(x, y);
             }   
         }
@@ -420,7 +444,7 @@ class Pinwheel{
 
 // ------------------------------------------------------------------------------------------ Brush
 class Brush{
-    // set variables to use
+    // constructor radius length, colour
     constructor(r, col){
         this.r = r;
         this.col = col;
@@ -447,6 +471,7 @@ class Brush{
         this.yMouse = e.offsetY;
         if(this.mouseDown == true && this.close == false){
             var temp = new Ellipse(this.xMouse, this.yMouse, this.r, this.r, 0, 0, 2 * Math.PI, this.col)
+            // add new circles to circleSet list
             this.circleSet.push(temp);
         }
     }
@@ -459,6 +484,8 @@ class Brush{
     }
 
     update(){
+        // if mouse in down and this.close is false
+        // draw new ellipse using parameters 
         if(this.mouseDown == true && this.close == false){
             var temp = new Ellipse(this.xMouse, this.yMouse, this.r, this.r, 0, 0, 2 * Math.PI, this.col)
             this.circleSet.push(temp);
@@ -490,6 +517,7 @@ class Brush{
     }
 }
 
+
 // ---------------------------------------------------------------------------------------- CircleButton
 class CircleButton{
     // set variables to use
@@ -501,9 +529,11 @@ class CircleButton{
     this.outline = c1;
     this.fill = c2;
     
+    // set up mouse event listeners
     canvas.addEventListener('click', this.mClick.bind(this));
     canvas.addEventListener('mousemove', this.mMove.bind(this));
   
+    // set mouse position to 0
     this.xMouse = 0;
     this.yMouse = 0;
     this.inBounds = false;
@@ -520,11 +550,13 @@ mClick(e){
 }
 
 mMove(e){
+    // x and y variable is updated with current mouse position
     this.xMouse = e.offsetX;
     this.yMouse = e.offsetY;
     this.inBounds = this.inBoundsCheck(this.xMouse, this.yMouse, this.x, this.y, this.r);
- 
-   if(this.inBounds == true || CircleButton.clicked == this){
+    
+    // change outline colour if mouse is inbounds and the button is clicked
+    if(this.inBounds == true || CircleButton.clicked == this){
         this.outline_stroke = 4;
     }else{
         this.outline_stroke= 2;
@@ -536,14 +568,14 @@ mMove(e){
     // Pythagorus Distance check
     // @ param x,y, positions of the mouse and of point circle and radius of point circle (number)
     // @ return boolean
-   inBoundsCheck(xM, yM, x, y, r){
-    var d = Math.sqrt( Math.pow(xM-x, 2) + Math.pow(yM-y, 2));
-    if(d<r){
-        return true;
-    }else{
-        return false;
+    inBoundsCheck(xM, yM, x, y, r){
+        var d = Math.sqrt( Math.pow(xM-x, 2) + Math.pow(yM-y, 2));
+        if(d<r){
+            return true;
+        }else{
+            return false;
+        }
     }
- }
 
 update(){
     ctx.beginPath();

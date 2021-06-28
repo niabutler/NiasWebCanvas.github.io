@@ -26,19 +26,15 @@ var B5 = new Button(25, 420, 300, 40, "Pinwheel", "rgb(128,128,128)", "rgb(255,2
 var B10 = new Button(25, 480, 140, 40, "Restart", "rgb(128,128,128)", "rgb(255,255,255)", "rgb(249,241,241)");
 var B11 = new Button(185, 480, 140, 40, "Undo", "rgb(128,128,128)", "rgb(255,255,255)", "rgb(249,241,241)");
 
-
 var swatch_list = []
 var s = 33;
-console.log(colArray)
 for(var i=0; i<colArray.length; i++){
     for(var j=0; j<colArray[i].length; j++){
         swatch_list.push(new Swatch(10+s*i, 540+s*j, 27, "rgb(75,75,75)", colArray[i][j]))
-        console.log(colArray[i][j])
         }
     }
 
 var count = 0;
-
 
 function animate(){
     ctx.clearRect(0, 0, width, height);
@@ -65,21 +61,12 @@ function animate(){
     B11.update();
     for(var i=0; i<swatch_list.length ; i++){
         swatch_list[i].update();
+        
     }
+    
 
     window.requestAnimationFrame(animate);
 }
 animate();
-
-/*
-if(Button.selected == "Clear"){
-    this.object_set = [];
-    Button.selected = "";
-}
-
-else if(Button.selected == "Undo"){
-    this.object_set.pop();
-    Button.selected = "";
-}*/
 
 
